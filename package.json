@@ -1,0 +1,16 @@
+{
+  "name": "backendbookswap",
+  "version": "1.0.0",
+  "description": "A backend for Bookswap that provides RESTful APIs.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "'book'",
+    "'node'",
+    "'swap'"
+  ],
+  "author": "Chowdhury Md Sami Al Muntahi",
+  "license": "ISC"
+}
