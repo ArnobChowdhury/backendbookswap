@@ -14,7 +14,7 @@ exports.createPost = (req, res, next) => {
     post.save()
         .then(result => {
             console.log(result);
-            res.status(201).json({message: 'User created!' });
+            res.status(201).json({ message: 'User created!' });
         })
         .catch(err => {
             if (!err.statuCode) {
@@ -22,4 +22,21 @@ exports.createPost = (req, res, next) => {
             }
             next(err);
         })
+};
+
+exports.getInitialPosts = async (req, res, next) => {
+    try {
+        const allPosts = await Post.getAllPosts();
+        console.log('From controller', allPosts);
+        res.status(201).json({
+            data: allPosts
+        });
+    }
+    catch(err) {
+        console.log(err);
+        if (!err.statuCode) {
+            err.statuCode = 500;
+        }
+        next(err);
+    }
 };

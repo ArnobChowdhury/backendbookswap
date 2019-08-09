@@ -23,6 +23,16 @@ class Post {
                 console.log(err);
             })
     }
+
+    static async getAllPosts () {
+        const db = getDB();
+        const allPosts = await db.collection('post').find({}).toArray((err, result) => {
+            if(err) throw err;
+            // console.log(result);
+            return result;
+        });
+        return allPosts;
+    }
 };
 
 module.exports = Post; 
