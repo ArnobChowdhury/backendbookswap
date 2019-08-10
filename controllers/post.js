@@ -24,19 +24,19 @@ exports.createPost = (req, res, next) => {
         })
 };
 
-exports.getInitialPosts = async (req, res, next) => {
-    try {
-        const allPosts = await Post.getAllPosts();
-        console.log('From controller', allPosts);
-        res.status(201).json({
-            data: allPosts
+exports.getInitialPosts = (req, res, next) => {
+    Post.getAllPosts()
+        .then(allPosts => {
+            console.log('From controller', allPosts);
+            res.status(201).json({
+                posts: allPosts
+            });
+        })
+        .catch (err => {
+            console.log(err);
+            if (!err.statuCode) {
+                err.statuCode = 500;
+            }
+            next(err);
         });
-    }
-    catch(err) {
-        console.log(err);
-        if (!err.statuCode) {
-            err.statuCode = 500;
-        }
-        next(err);
-    }
 };

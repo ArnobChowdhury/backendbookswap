@@ -24,14 +24,15 @@ class Post {
             })
     }
 
-    static async getAllPosts () {
+    static getAllPosts () {
         const db = getDB();
-        const allPosts = await db.collection('post').find({}).toArray((err, result) => {
-            if(err) throw err;
-            // console.log(result);
-            return result;
-        });
-        return allPosts;
+        return db
+                .collection('post')
+                .find({})
+                .toArray()
+                .then(posts => {
+                    return posts;
+                })
     }
 };
 
