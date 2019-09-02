@@ -13,8 +13,7 @@ exports.createPost = (req, res, next) => {
 
     post.save()
         .then(result => {
-            console.log(result);
-            res.status(201).json({ message: 'User created!' });
+            res.status(201).json({ message: 'Post created!' });
         })
         .catch(err => {
             if (!err.statuCode) {

@@ -8,14 +8,8 @@ class User {
 
     save() {
         const db = getDb();
-        db.collection('users')
+        return db.collection('users')
             .insertOne(this)
-            .then(result => {
-                console.log(result);
-            })
-            .catch(err => {
-                console.log(err);
-            });
     }
 }
 
