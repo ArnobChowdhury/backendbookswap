@@ -7,6 +7,7 @@ const mongoConnect = require('./util/database').mongoConnect;
 
 const feedRoutes = require('./routes/feed');
 const authRoutes = require('./routes/auth');
+const authRoutes = require('./routes/userinfo');
 const postRoutes = require('./routes/post');
 
 const app = express();
@@ -23,6 +24,7 @@ app.use((req, res, next) => {
 
 app.use('/feed', feedRoutes);
 app.use('/auth', authRoutes);
+app.use('/userinfo', userInfoRoutes);
 app.use('/post', postRoutes);
 
 mongoConnect(() => {
